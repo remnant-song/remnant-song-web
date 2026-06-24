@@ -1,6 +1,6 @@
 # 架构文档 — Remnant Song Web
 
-> 最后更新：2026-06-24 | 作者：trae+claude
+> 最后更新：2026-06-24 | 作者：trae+deepseek-v4-pro
 
 ---
 

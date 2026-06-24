@@ -1,5 +1,5 @@
 /*
- * @Author: trae+claude
+ * @Author: trae+deepseek-v4-pro
  * @Date: 2026-06-24
  * @Desc: Vite 环境变量类型声明
  *   扩展 ImportMetaEnv 接口，为项目使用的所有环境变量提供类型提示

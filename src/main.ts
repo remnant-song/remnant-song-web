@@ -1,7 +1,7 @@
 /*
- * @Author: trae+claude
+ * @Author: trae+deepseek-v4-pro
  * @Date: 2026-06-24
- * @Modify: trae+claude, 2026-06-24, CSS 入口统一为 styles/index.css，移除冗余的 style.css 导入
+ * @Modify: trae+deepseek-v4-pro, 2026-06-24, CSS 入口统一为 styles/index.css，移除冗余的 style.css 导入
  * @Desc: 应用入口文件
  *   初始化 Vue 实例、路由、状态管理、国际化
  *   加载全局样式

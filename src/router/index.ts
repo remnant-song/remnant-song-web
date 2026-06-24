@@ -1,5 +1,5 @@
 /*
- * @Author: trae+claude
+ * @Author: trae+deepseek-v4-pro
  * @Date: 2026-06-24
  * @Desc: Vue Router 路由配置
  *   - 使用 createWebHistory 实现 HTML5 History 模式

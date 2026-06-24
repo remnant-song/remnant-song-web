@@ -1,5 +1,5 @@
 <!--
-  @Author: trae+claude
+  @Author: trae+deepseek-v4-pro
   @Date: 2026-06-24
   @Desc: 首页视图组件
     展示个人网站的核心信息，包括问候语、角色定位和 CTA 按钮

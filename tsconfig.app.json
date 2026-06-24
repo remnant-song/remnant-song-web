@@ -5,14 +5,14 @@
     "types": ["vite/client"],
 
     /*
-     * @Author: trae+claude
+     * @Author: trae+deepseek-v4-pro
      * @Date: 2026-06-24
      * @Desc: 开启 TypeScript 严格模式，确保类型安全
      */
     "strict": true,
 
     /*
-     * @Author: trae+claude
+     * @Author: trae+deepseek-v4-pro
      * @Date: 2026-06-24
      * @Desc: 配置路径映射，与 vite.config.ts 中的 @ 别名保持一致
      */

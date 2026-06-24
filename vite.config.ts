@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [vue()],
 
   /*
-   * @Author: trae+claude
+   * @Author: trae+deepseek-v4-pro
    * @Date: 2026-06-24
    * @Desc: 配置路径别名 @ -> src，方便模块导入
    */
@@ -18,7 +18,7 @@ export default defineConfig({
   },
 
   /*
-   * @Author: trae+claude
+   * @Author: trae+deepseek-v4-pro
    * @Date: 2026-06-24
    * @Desc: 构建优化配置
    *   - manualChunks: 将基础库（vue/pinia/vue-router/gsap）分包为 vendor，减小主包体积 & 利用浏览器缓存

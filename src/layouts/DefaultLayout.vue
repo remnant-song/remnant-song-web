@@ -1,5 +1,5 @@
 <!--
-  @Author: trae+claude
+  @Author: trae+deepseek-v4-pro
   @Date: 2026-06-24
   @Desc: 默认布局组件
     提供网站整体的页头 (Header)、主内容区 (RouterView)、页脚 (Footer) 框架

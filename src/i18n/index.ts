@@ -1,5 +1,5 @@
 /*
- * @Author: trae+claude
+ * @Author: trae+deepseek-v4-pro
  * @Date: 2026-06-24
  * @Desc: 国际化 (i18n) 核心配置
  *   - 使用 vue-i18n v9 与 Vue 3 组合式 API 兼容

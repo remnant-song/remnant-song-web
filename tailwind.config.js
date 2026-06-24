@@ -1,5 +1,5 @@
 /*
- * @Author: trae+claude
+ * @Author: trae+deepseek-v4-pro
  * @Date: 2026-06-24
  * @Desc: Tailwind CSS 配置
  *   - content: 扫描所有 Vue/TS/JS/HTML 文件中的 class 使用

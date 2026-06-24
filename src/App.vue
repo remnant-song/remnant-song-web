@@ -1,5 +1,5 @@
 <!--
-  @Author: trae+claude
+  @Author: trae+deepseek-v4-pro
   @Date: 2026-06-24
   @Desc: Vue 根组件
     作为应用的最外层容器，直接渲染布局组件
