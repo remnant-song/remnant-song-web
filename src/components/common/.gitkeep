@@ -1,0 +1,4 @@
+# 可复用通用组件目录
+# 按功能域分子目录管理：
+#   components/common/  —— 基础通用组件（Button, Icon, Modal 等）
+#   components/layout/  —— 布局相关组件（如有需要从 layouts/ 拆出）

@@ -1,0 +1,5 @@
+# 组合式函数（Composables / Hooks）目录
+# 存放可复用的 Vue 组合式函数，例如：
+#   useLanguage.ts  —— 语言切换逻辑
+#   useTheme.ts     —— 主题切换（暗黑/明亮模式）
+#   useScroll.ts    —— 滚动相关逻辑

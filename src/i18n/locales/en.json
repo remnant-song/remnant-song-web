@@ -1,0 +1,30 @@
+{
+  "app": {
+    "title": "Remnant Song",
+    "subtitle": "Personal Website"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "works": "Works",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hello, I'm",
+    "role": "Developer / Creator",
+    "cta": "Explore My Works"
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "builtWith": "Built with Vue 3 + Vite + TypeScript"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Page Not Found",
+    "goHome": "Back to Home"
+  },
+  "language": {
+    "switch": "中文",
+    "label": "Language"
+  }
+}

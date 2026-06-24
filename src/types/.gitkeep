@@ -1,0 +1,5 @@
+# 类型定义目录
+# 存放全局 TypeScript 类型声明文件和接口定义
+# 例如：
+#   api.d.ts     —— API 响应类型
+#   components.d.ts —— 组件 Props 通用类型
