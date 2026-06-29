@@ -21,6 +21,23 @@
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
+
+  /* ============ 品牌颜色主题令牌 ============ */
+  /* 粉色系 */
+  --brand-pink: 338 64% 69%;
+  --brand-pink-shadow: #B5447B;
+  /* 紫色系 */
+  --brand-purple: 238 20% 44%;
+  --brand-purple-shadow: #3C3D4F;
+  /* 橙色系 */
+  --brand-orange: 28 55% 47%;
+  --brand-orange-shadow: #873706;
+  /* 青色系（用户称绿色） */
+  --brand-cyan: 184 64% 51%;
+  --brand-cyan-shadow: #2B3E44;
+  /* 中性色 */
+  --muted: 240 5% 85%;
+  --sidebar-primary: 240 6% 30%;
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -55,6 +72,14 @@
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
+
+    /* ============ 暗色主题品牌颜色 ============ */
+    --brand-pink: 338 64% 75%;
+    --brand-purple: 238 20% 50%;
+    --brand-orange: 28 55% 55%;
+    --brand-cyan: 184 64% 58%;
+    --muted: 240 5% 25%;
+    --sidebar-primary: 240 6% 70%;
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
