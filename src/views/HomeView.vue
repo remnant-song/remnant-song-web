@@ -8,14 +8,19 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import FluidBackground from '@/components/FluidBackground.vue'
-import ArtTitle from '@/components/ArtTitle.vue'
+import FluidBackground from '@/components/common/FluidBackground.vue'
+import ArtTitle from '@/components/common/ArtTitle.vue'
 const { t } = useI18n()
+
 </script>
 
 <template>
   <FluidBackground/>
-  <ArtTitle text="HELLO WORLD" show-background="brush" animate />
+  <ArtTitle
+      text="REMNANT SONG"
+      show-background="brush"
+      animate
+  />
   <!--  <section class="flex flex-col items-center justify-center min-h-[70vh] text-center px-4">-->
 <!--    &lt;!&ndash; 问候语 &ndash;&gt;-->
 <!--    <p class="text-lg text-accent mb-2">{{ t('home.greeting') }}</p>-->
