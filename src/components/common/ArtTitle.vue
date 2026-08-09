@@ -191,12 +191,22 @@ const getCssVar = (name: string): string => {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || ''
 }
 
-// 将 hsl 字符串亮度增加
+/*
+ * @Author: trae + DeepSeek-V4-Pro
+ * @Date: 2026-08-09
+ * @Desc: 修复 lightenHsl 返回值被双重包裹 hsl() 的 bug。
+ *        原实现返回已包裹 hsl() 的完整字符串（如 "hsl(330 80% 65%)"），
+ *        但 initPresets 中又通过 `hsl(${lightenHsl(...)})` 再次包裹，
+ *        导致最终产生 "hsl(hsl(330 80% 65%))" 或 "hsl(#ffffff)" 等无效颜色值，
+ *        SVG 渐变由此失效，文字失去蜡笔纹理及描边效果。
+ *        修复方式：改为返回纯 HSL 数值（如 "330 80% 65%"），
+ *        与 getCssVar 返回值格式一致，由调用方统一包裹 hsl()。
+ */
 const lightenHsl = (hsl: string, amount: number): string => {
-  if (!hsl) return '#ffffff'
+  if (!hsl) return '' // 返回空串，让调用方的 || 回退值生效
   const parts = hsl.split(' ')
   if (parts.length !== 3) return hsl
-  return `hsl(${parts[0]} ${parts[1]} ${Math.min(100, parseFloat(parts[2]) + amount)}%)`
+  return `${parts[0]} ${parts[1]} ${Math.min(100, parseFloat(parts[2]) + amount)}%`
 }
 
 // 组件挂载后读取一次 CSS 变量，后续通过 colorPresets 扩展
@@ -207,32 +217,51 @@ const initPresets = () => {
   const cyan = getCssVar('--brand-cyan')
   const muted = getCssVar('--muted')
   const mutedFg = getCssVar('--sidebar-primary')
+  /*
+   * @Desc: --brand-*-shadow 是 HEX 颜色（如 #B5447B），直接读取即可，
+   *        不再通过 hsl() 包裹，避免产生 "hsl(#B5447B)" 无效值。
+   */
+  const pinkShadow = getCssVar('--brand-pink-shadow')
+  const purpleShadow = getCssVar('--brand-purple-shadow')
+  const orangeShadow = getCssVar('--brand-orange-shadow')
+  const cyanShadow = getCssVar('--brand-cyan-shadow')
 
+  /*
+   * @Author: trae + DeepSeek-V4-Pro
+   * @Date: 2026-08-09
+   * @Desc: 修复 shadowColor 生成逻辑。
+   *        CSS 变量中 --brand-*-shadow 为 HEX 颜色（如 #B5447B），
+   *        原代码错误地将其包裹在 hsl() 中，生成 "hsl(#B5447B)" 等无效值；
+   *        而 --sidebar-primary 为纯 HSL 数值（如 "240 6% 30%"），
+   *        原代码却未包裹 hsl()，生成 "240 6% 30%" 无效值。
+   *        修复：HEX 变量直接使用，HSL 数值变量包裹 hsl()，
+   *        未定义时回退为硬编码的 hsl() 颜色值。
+   */
   builtInPresets.value = {
     pink: {
       color: `hsl(${pink || '330 80% 55%'})`,
       lightColor: `hsl(${lightenHsl(pink, 10) || '330 80% 65%'})`,
-      shadowColor: `hsl(${getCssVar('--brand-pink-shadow') || '330 50% 30%'})`,
+      shadowColor: pinkShadow || 'hsl(330 50% 30%)',
     },
     purple: {
       color: `hsl(${purple || '260 70% 55%'})`,
       lightColor: `hsl(${lightenHsl(purple, 20) || '260 70% 75%'})`,
-      shadowColor: `hsl(${getCssVar('--brand-purple-shadow') || '260 45% 30%'})`,
+      shadowColor: purpleShadow || 'hsl(260 45% 30%)',
     },
     orange: {
       color: `hsl(${orange || '25 95% 55%'})`,
       lightColor: `hsl(${lightenHsl(orange, 20) || '25 95% 75%'})`,
-      shadowColor: `hsl(${getCssVar('--brand-orange-shadow') || '25 80% 30%'})`,
+      shadowColor: orangeShadow || 'hsl(25 80% 30%)',
     },
     cyan: {
       color: `hsl(${cyan || '185 70% 50%'})`,
       lightColor: `hsl(${lightenHsl(cyan, 20) || '185 70% 70%'})`,
-      shadowColor: `hsl(${getCssVar('--brand-cyan-shadow') || '185 60% 25%'})`,
+      shadowColor: cyanShadow || 'hsl(185 60% 25%)',
     },
     muted: {
       color: `hsl(${muted || '0 0% 50%'})`,
       lightColor: `hsl(${lightenHsl(muted, 5) || '0 0% 55%'})`,
-      shadowColor: mutedFg || '#333333',
+      shadowColor: mutedFg ? `hsl(${mutedFg})` : '#333333',
     },
   }
 }
