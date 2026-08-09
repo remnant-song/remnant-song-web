@@ -32,6 +32,12 @@ const routes: RouteRecordRaw[] = [
       title: '404',
     },
   },
+  {
+    path: '/blog',
+    name: 'BlogPost',
+    component: () => import('@/views/blog/BlogPostView.vue'),
+    meta: { title: 'Blog' },
+  }
 ]
 
 const router = createRouter({

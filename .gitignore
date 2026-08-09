@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 /.vscode/
+/docs/task1.1.md
