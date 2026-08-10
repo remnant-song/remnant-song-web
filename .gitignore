@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 /.vscode/
 /docs/task1.1.md
+/src/content/posts/test/ARCHITECTURE.md

@@ -18,6 +18,7 @@ const { t } = useI18n()
 /** 导航菜单项 —— 需要与 i18n locales 中的 nav.* 键对应 */
 const navItems = [
   { key: 'home', path: '/' },
+  { key: 'blog', path: '/blog' },
   // 后续扩展更多导航项，在此数组中添加即可
   // { key: 'about', path: '/about' },
   // { key: 'works', path: '/works' },

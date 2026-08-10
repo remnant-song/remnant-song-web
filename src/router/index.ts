@@ -34,7 +34,19 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/blog',
+    name: 'BlogList',
+    component: () => import('@/views/blog/BlogListView.vue'),
+    meta: { title: 'Blog' },
+  },
+  {
+    path: '/blog/:slug',
     name: 'BlogPost',
+    component: () => import('@/views/blog/BlogPostView.vue'),
+    meta: { title: 'Blog' },
+  },
+  {
+    path: '/blog/:category/:slug',
+    name: 'BlogPostCategorized',
     component: () => import('@/views/blog/BlogPostView.vue'),
     meta: { title: 'Blog' },
   }

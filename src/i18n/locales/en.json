@@ -5,6 +5,7 @@
   },
   "nav": {
     "home": "Home",
+    "blog": "Blog",
     "about": "About",
     "works": "Works",
     "contact": "Contact"
