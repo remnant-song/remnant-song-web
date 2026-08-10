@@ -8,9 +8,78 @@ importers:
 
   .:
     dependencies:
+      '@mdit/plugin-abbr':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-alert':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-align':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-anchor':
+        specifier: ^1.1.3
+        version: 1.1.3(markdown-it@15.0.0)
+      '@mdit/plugin-attrs':
+        specifier: ^1.1.1
+        version: 1.1.1(markdown-it@15.0.0)
+      '@mdit/plugin-container':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-dl':
+        specifier: ^1.0.3
+        version: 1.0.3(markdown-it@15.0.0)
+      '@mdit/plugin-emoji':
+        specifier: ^1.1.1
+        version: 1.1.1(markdown-it@15.0.0)
+      '@mdit/plugin-figure':
+        specifier: ^1.1.0
+        version: 1.1.0(markdown-it@15.0.0)
+      '@mdit/plugin-footnote':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-img-lazyload':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-img-mark':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-img-size':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-ins':
+        specifier: ^2.0.1
+        version: 2.0.1(markdown-it@15.0.0)
+      '@mdit/plugin-mark':
+        specifier: ^2.0.1
+        version: 2.0.1(markdown-it@15.0.0)
+      '@mdit/plugin-ruby':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-spoiler':
+        specifier: ^2.0.1
+        version: 2.0.1(markdown-it@15.0.0)
+      '@mdit/plugin-stylize':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      '@mdit/plugin-sub':
+        specifier: ^1.0.3
+        version: 1.0.3(markdown-it@15.0.0)
+      '@mdit/plugin-sup':
+        specifier: ^1.0.3
+        version: 1.0.3(markdown-it@15.0.0)
+      '@mdit/plugin-tasklist':
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.0)
+      github-markdown-css:
+        specifier: ^5.9.0
+        version: 5.9.0
       gsap:
         specifier: ^3.12.0
         version: 3.15.0
+      highlight.js:
+        specifier: ^11.11.1
+        version: 11.11.1
       pinia:
         specifier: ^2.2.0
         version: 2.3.1(typescript@6.0.3)(vue@3.5.35(typescript@6.0.3))
@@ -183,6 +252,206 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@mdit/helper@1.0.1':
+    resolution: {integrity: sha512-zAzShsRZmkqjuoOFg6/zTCYVpvghj9a30Cl/eOGkE0xzRJJJG8T18eqb2lgceQhjVLWHK02HNVkzyfNHc429lQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-abbr@1.0.2':
+    resolution: {integrity: sha512-yHQoqP5ll9uHa5VtNpGJSXIRs8FRT6TmrFjmsM3d6qxNMx0qkz7QLFhleLLg5d+aGGw5WTFVbQsA/M96DLD3pg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-alert@1.0.2':
+    resolution: {integrity: sha512-A8p/Kodj96OeO1wrQMH0oSKQQ8N4jzeHSVrZQwQsBS6Z2NA+JvAk1AdVhzmn2C4b4EuprbFwWPvFlruoFm9iMQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-align@1.0.2':
+    resolution: {integrity: sha512-U78ahccxNrUfR5GooMsBgF5xxQb6+EoErmaWu9z6QLtso0zXDlGaBTpONHmIA+LxAwXTrP6EvtFGnrEo6IFAsA==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-anchor@1.1.3':
+    resolution: {integrity: sha512-lkB9c+NTR//ZLv4MgrDb2ewYulr/WOCWPx0aQC/HbccWJc0JVPMeYwalWfzj517pvKbHGQdOpGRTcFcnn+NG0g==}
+    peerDependencies:
+      markdown-it: ^14.2.0
+
+  '@mdit/plugin-attrs@1.1.1':
+    resolution: {integrity: sha512-DgBqzdg8stCGtCsQUJLWhHsyk2HnNp/2d/h5WV9Op2lMGnHA8hjOgnHbmwp0AD8djfv+uUCD6VlOCw3y4L/rGQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-container@1.0.2':
+    resolution: {integrity: sha512-gCpqmadamWVbDI7+OgkywDGjfgqxrjZo3U+iK+sH7vERnZyX4sx1X65pXbqrem8Q5/4yO5t0d+kWkPC733ceRw==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-dl@1.0.3':
+    resolution: {integrity: sha512-Vsjq81Zj6hGo+Ui1lXZc7cYANGBKZV54JK7Afi1tsB1k0VTJQrri9Y3Cpp6bInf0WUFLUH8W9J8z974p/Qj/qg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-emoji@1.1.1':
+    resolution: {integrity: sha512-8guVkqXImO/V4eCKMxrKot7EO3HI9sIsS2fqFYBQUpy2j3HbsItvsx5QXKf71Nzyr6WKxpznDas/tewrbC2pcg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-figure@1.1.0':
+    resolution: {integrity: sha512-FWg2cDX8JT6o/f+aAk0vU644JDCLzwJWIpJBJzLcxNEOiJQ3zL8dLr36wjhV6ySwaFntBVvCnSuhteJwUACdlQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-footnote@1.0.2':
+    resolution: {integrity: sha512-G7pzoczbzVph9s9eyLuG9T24//ub9vK7A8jFCESQIzZj83ZJF3BHs7r/wcQx4KzmH+kDpLiAbhvzT/Y3+7OUig==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+
+  '@mdit/plugin-img-lazyload@1.0.2':
+    resolution: {integrity: sha512-UFG+wRJU7FvZV8o/b4Endw8XRRV2tS3AphhPjRt2F7dKW+ByBWmYPNxgRGqm+j3exFTwCHPhMHZbcl0KtYOrHA==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-img-mark@1.0.2':
+    resolution: {integrity: sha512-p1QmcEsRYySZoB4tWLw9dOcZbqu2z7JnUHhDtMbqJPxGhYfFrh6K61UMyLA8ZMI2RY+Xbf4nbTh1engV+bJVDw==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-img-size@1.0.2':
+    resolution: {integrity: sha512-E6Q4GIPUdawjvTdgFoteMWr9PGq57Ktk/Wl0O+YH2WD5IMzjyhhe1tjt6iMmZao/iaxJhQeLD2HYa00IMfPedw==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-inline-rule@2.0.1':
+    resolution: {integrity: sha512-l1pLarAVfPpyVoJ1dyGaP+F904Cb5ZXu+nyM38QH0gy9jxKJvYi1sYUUHfJXBeKIbllcgQLuSggW/EV/5JIk4g==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-ins@2.0.1':
+    resolution: {integrity: sha512-Gu3dWBvS5hDdnAWYGdxS9qBXrY5vGag3T4t7WgzW+4EwyOCEaMwmCkoq5LZ5piO9TVH6eDWmSAIvF8HgHp4SDQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-mark@2.0.1':
+    resolution: {integrity: sha512-5/i5Ab4Wi5NiApcx7dS4NKhQDuZrjVSvlKaqLXidw/ZtGOmc1XP70eRAMFUNw9QciDbWZRX7VzyFGyZwSsaTzA==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-ruby@1.0.2':
+    resolution: {integrity: sha512-kKdGVX+gVJDvee8FxEN0xfD50dTLIwU5q0jHiRqIa2rzlSSMlZktyBFrx/g1e+CZgMdRuYuge9yeSPObU1MrIA==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-spoiler@2.0.1':
+    resolution: {integrity: sha512-x+8iIidkzeru2MT1eoDo27p4S87PRlfwEU+sR2Db1bkJf5k8t8zDupRxMjMtOTFvZrwgW4N/s3hXpaGu2avKxQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-stylize@1.0.2':
+    resolution: {integrity: sha512-5mTc10f99gKiPRFRNJPU5zXNppJGqvVl0Ocpql5OuVouV9VdFBEDZdQStv1XRtXkSbcnmHYjArmtmIeO62O7rQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-sub@1.0.3':
+    resolution: {integrity: sha512-DWiRxHvFTpuLrHAWxaJt5yBcIpHKupRik4164zApXkFGvFIhWhVSiaL5x8or+JmBgQAUXsolyAf6TWL8W7Drkg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-sup@1.0.3':
+    resolution: {integrity: sha512-Diq1cKuchvHZLupZEwO39hc4Dg+hPw3sKzj3f0ASE9ALUkz8sDeQTIA2IXg9GobnwADHA1q7bzsqdulm1ACgYQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-tasklist@1.0.2':
+    resolution: {integrity: sha512-h+WCr/h+K0pbyZdJnrPEpgeMFlffzqfviY3TDmj7PdZiVAS1YF1s95+tt9bvmJWKPrALV/IgePxsu5LWnODMmw==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
 
   '@napi-rs/wasm-runtime@1.1.4':
     resolution: {integrity: sha512-3NQNNgA1YSlJb/kMH1ildASP9HW7/7kYnRI2szWJaofaS1hWmbGI4H+d3+22aGzXXN9IJ+n+GiFVcGipJP18ow==}
@@ -550,6 +819,10 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
+  github-markdown-css@5.9.0:
+    resolution: {integrity: sha512-tmT5sY+zvg2302XLYEfH2mtkViIM1SWf2nvYoF5N1ZsO0V6B2qZTiw3GOzw4vpjLygK/KG35qRlPFweHqfzz5w==}
+    engines: {node: '>=10'}
+
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -568,6 +841,10 @@ packages:
   hasown@2.0.4:
     resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
     engines: {node: '>= 0.4'}
+
+  highlight.js@11.11.1:
+    resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
+    engines: {node: '>=12.0.0'}
 
   html-encoding-sniffer@6.0.0:
     resolution: {integrity: sha512-CV9TW3Y3f8/wT0BRFc1/KAVQ3TUHiXmaAb6VW9vtiMFf7SLoMd1PdAc4W3KFOFETBJUb90KatHqlsZMWV+R9Gg==}
@@ -1210,6 +1487,150 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
+  '@mdit/helper@1.0.1(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-abbr@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-alert@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-align@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@mdit/plugin-container': 1.0.2(markdown-it@15.0.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-anchor@1.1.3(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-attrs@1.1.1(markdown-it@15.0.0)':
+    dependencies:
+      '@mdit/helper': 1.0.1(markdown-it@15.0.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-container@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-dl@1.0.3(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-emoji@1.1.1(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-figure@1.1.0(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-footnote@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-img-lazyload@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-img-mark@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-img-size@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-inline-rule@2.0.1(markdown-it@15.0.0)':
+    dependencies:
+      '@mdit/helper': 1.0.1(markdown-it@15.0.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-ins@2.0.1(markdown-it@15.0.0)':
+    dependencies:
+      '@mdit/plugin-inline-rule': 2.0.1(markdown-it@15.0.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-mark@2.0.1(markdown-it@15.0.0)':
+    dependencies:
+      '@mdit/plugin-inline-rule': 2.0.1(markdown-it@15.0.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-ruby@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-spoiler@2.0.1(markdown-it@15.0.0)':
+    dependencies:
+      '@mdit/plugin-inline-rule': 2.0.1(markdown-it@15.0.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-stylize@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-sub@1.0.3(markdown-it@15.0.0)':
+    dependencies:
+      '@mdit/plugin-inline-rule': 2.0.1(markdown-it@15.0.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-sup@1.0.3(markdown-it@15.0.0)':
+    dependencies:
+      '@mdit/plugin-inline-rule': 2.0.1(markdown-it@15.0.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
+  '@mdit/plugin-tasklist@1.0.2(markdown-it@15.0.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 15.0.0
+
   '@napi-rs/wasm-runtime@1.1.4(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
     dependencies:
       '@emnapi/core': 1.10.0
@@ -1543,6 +1964,8 @@ snapshots:
 
   function-bind@1.1.2: {}
 
+  github-markdown-css@5.9.0: {}
+
   glob-parent@5.1.2:
     dependencies:
       is-glob: 4.0.3
@@ -1563,6 +1986,8 @@ snapshots:
   hasown@2.0.4:
     dependencies:
       function-bind: 1.1.2
+
+  highlight.js@11.11.1: {}
 
   html-encoding-sniffer@6.0.0:
     dependencies:
