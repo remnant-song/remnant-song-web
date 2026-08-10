@@ -84,7 +84,13 @@ const currentYear = new Date().getFullYear()
     <!-- ========== Main Content / 主内容区 ========== -->
     <main class="flex-1">
       <router-view v-slot="{ Component }">
-        <transition name="page-fade" mode="out-in">
+        <!--
+          @Modify: trae+deepseek-v4-pro, 2026-08-10
+            去掉 mode="out-in"，避免 scoped CSS 导致过渡钩子卡死。
+            旧组件离开过渡的 transitionend 事件不触发时，新组件永远不挂载。
+            若后续需要交错动画，改用 :deep() 穿透样式或全局 CSS。
+        -->
+        <transition name="page-fade">
           <component :is="Component" />
         </transition>
       </router-view>
