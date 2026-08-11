@@ -38,23 +38,20 @@ function handleSwitchLanguage(): void {
 function isActive(path: string): boolean {
   return router.currentRoute.value.path === path
 }
-
-/** 获取当前年份，用于页脚版权信息 */
-const currentYear = new Date().getFullYear()
 </script>
 
 <template>
   <div class="flex flex-col min-h-screen">
     <!-- ========== Header / 页头 ========== -->
     <header class="sticky top-0 z-50 bg-bg/80 backdrop-blur-sm border-b border-border">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-center relative">
         <!-- 网站标题 -->
-        <router-link
-          to="/"
-          class="text-xl font-heading text-text-h no-underline hover:text-accent transition-colors"
-        >
-          {{ t('app.title') }}
-        </router-link>
+<!--        <router-link-->
+<!--          to="/"-->
+<!--          class="text-xl font-heading text-text-h no-underline hover:text-accent transition-colors"-->
+<!--        >-->
+<!--          {{ t('app.title') }}-->
+<!--        </router-link>-->
 
         <!-- 导航菜单 -->
         <nav class="hidden sm:flex items-center gap-6">
@@ -71,7 +68,7 @@ const currentYear = new Date().getFullYear()
 
         <!-- 语言切换按钮 -->
         <button
-          class="text-sm px-3 py-1.5 rounded-md border border-border bg-transparent text-text 
+          class="absolute right-4 text-sm px-3 py-1.5 rounded-md border border-border bg-transparent text-text 
                  hover:border-accent hover:text-accent transition-colors cursor-pointer"
           :title="t('language.label')"
           @click="handleSwitchLanguage"
@@ -97,14 +94,14 @@ const currentYear = new Date().getFullYear()
     </main>
 
     <!-- ========== Footer / 页脚 ========== -->
-    <footer class="border-t border-border py-6 text-center">
-      <p class="text-sm text-text m-0">
-        &copy; {{ currentYear }} {{ t('app.title') }}. {{ t('footer.copyright') }}
-      </p>
-      <p class="text-xs text-text mt-1 opacity-60">
-        {{ t('footer.builtWith') }}
-      </p>
-    </footer>
+<!--    <footer class="border-t border-border py-6 text-center">-->
+<!--      <p class="text-sm text-text m-0">-->
+<!--        &copy; {{ currentYear }} {{ t('app.title') }}. {{ t('footer.copyright') }}-->
+<!--      </p>-->
+<!--      <p class="text-xs text-text mt-1 opacity-60">-->
+<!--        {{ t('footer.builtWith') }}-->
+<!--      </p>-->
+<!--    </footer>-->
   </div>
 </template>
 

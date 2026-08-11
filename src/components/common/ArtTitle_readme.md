@@ -17,6 +17,7 @@
 | `fontSize` | `number` | `110` | 字体大小（SVG 单位） |
 | `textY` | `number` | `140` | 文本基线 Y 坐标 |
 | `strokeWidth` | `number` | `5` | 文字描边宽度 |
+| `animationSpeed` | `number` | `1` | 动画速度倍率，`1` 为正常速度（2.4s 总时长 / 0.2s 字符延迟），`2` 为两倍速，`0.5` 为半速。≤ 0 时视为 `1` |
 
 ### 颜色相关类型
 ```ts
@@ -112,6 +113,16 @@ type ColorSource = string | ColorConfig
 <ArtTitle text="ANIMATE" animate />
 ```
 动画为逐字书写效果，延迟递增，可配合 `show-background` 一起使用。
+
+### 7.1 调节动画速度
+```vue
+<!-- 2 倍速，快放 -->
+<ArtTitle text="FAST" animate :animation-speed="2" />
+
+<!-- 0.5 倍速，慢放 -->
+<ArtTitle text="SLOW" animate :animation-speed="0.5" />
+```
+通过 `animationSpeed` 倍率控制，`2` 表示总时长减半（1.2s）、字符延迟减半（0.1s），`0.5` 反之。
 
 ### 8. 扩展自定义预设色板
 ```vue

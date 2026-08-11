@@ -1,7 +1,6 @@
 <template>
-  <div class="art-title-wrapper" data-tauri-drag-region>
+  <div class="art-title-wrapper" :style="animationStyle">
     <svg
-        data-tauri-drag-region
         width="100%"
         height="auto"
         :viewBox="`0 0 ${viewBoxWidth} 200`"
@@ -74,7 +73,6 @@
       <!-- 背景装饰：毛刷笔触（随文本宽度等比缩放） -->
       <g v-if="showBackground === 'brush'" opacity="0.6" filter="url(#filter-brush)">
         <path
-            data-tauri-drag-region
             :d="`M${80 * scaleX} 180 Q${250 * scaleX} 185, ${450 * scaleX} 175 T${820 * scaleX} 180`"
             stroke="url(#g-pink-brush)"
             stroke-width="20"
@@ -83,7 +81,6 @@
             fill="none"
         />
         <path
-            data-tauri-drag-region
             :d="`M${80 * scaleX} 182 Q${250 * scaleX} 187, ${450 * scaleX} 177 T${820 * scaleX} 182`"
             stroke="url(#g-pink-brush)"
             stroke-width="10"
@@ -93,7 +90,6 @@
             opacity="0.8"
         />
         <path
-            data-tauri-drag-region
             :d="`M${80 * scaleX} 178 Q${250 * scaleX} 183, ${450 * scaleX} 173 T${820 * scaleX} 178`"
             stroke="url(#g-orange-brush)"
             stroke-width="4"
@@ -109,7 +105,6 @@
         <text
             v-for="(item, index) in finalLetters"
             :key="index"
-            data-tauri-drag-region
             :x="item.x"
             :y="textY"
             font-family="Arial Black, Helvetica, sans-serif"
@@ -168,6 +163,12 @@ const props = withDefaults(
       textY?: number
       /** 文字描边宽度 */
       strokeWidth?: number
+      /**
+       * 动画速度倍率，默认 1（正常速度）
+       * > 1 加速，< 1 减速，≤ 0 时视为 1
+       * 通过 CSS 变量 --anim-duration / --anim-delay 控制
+       */
+      animationSpeed?: number
     }>(),
     {
       colors: undefined,
@@ -179,6 +180,7 @@ const props = withDefaults(
       fontSize: 110,
       textY: 140,
       strokeWidth: 5,
+      animationSpeed: 1,
     }
 )
 
@@ -459,6 +461,21 @@ const viewBoxWidth = computed(() => {
 // 背景缩放比例（相对于 900 基准）
 const scaleX = computed(() => viewBoxWidth.value / 900)
 
+/*
+  @Author: trae+deepseek-v4-pro
+  @Date: 2026-08-11
+  @Desc: 根据 animationSpeed 倍率计算动画 CSS 变量。
+         duration 基准 2.4s，delay 基准 0.2s/字符。
+         speed ≤ 0 时回退为默认 1 倍速。
+*/
+const animationStyle = computed(() => {
+  const speed = props.animationSpeed && props.animationSpeed > 0 ? props.animationSpeed : 1
+  return {
+    '--anim-duration': `${(2.4 / speed).toFixed(2)}s`,
+    '--anim-delay': `${(0.2 / speed).toFixed(2)}s`,
+  }
+})
+
 // 客户端挂载后，若 CSS 变量未及时读取，重新初始化预设
 const isMounted = ref(false)
 if (typeof window !== 'undefined') {
@@ -496,8 +513,12 @@ svg {
   stroke-dashoffset: 1000;
   filter: blur(4px);
   transform: translateY(10px);
-  animation: writing 2.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  animation-delay: calc(var(--index, 0) * 0.2s);
+  /*
+    @Modify: trae+deepseek-v4-pro, 2026-08-11
+      动画时长和延迟改为引用 CSS 自定义属性，由 animationSpeed prop 动态控制
+  */
+  animation: writing var(--anim-duration, 2.4s) cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation-delay: calc(var(--index, 0) * var(--anim-delay, 0.2s));
 }
 
 @keyframes writing {
