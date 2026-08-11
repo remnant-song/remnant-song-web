@@ -8,10 +8,11 @@
 
 <script setup lang="ts">
 import ArtTitle from '@/components/common/ArtTitle.vue'
+import FluidBackground from "@/components/common/FluidBackground.vue";
 </script>
 
 <template>
-<!--  <FluidBackground/>-->
+  <FluidBackground/>
   <ArtTitle
       text="REMNANT SONG"
       show-background="brush"

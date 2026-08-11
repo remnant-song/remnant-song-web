@@ -92,7 +92,7 @@ onMounted(async () => {
     console.error('[BlogListView] 加载文章失败:', err)
     error.value = err instanceof Error ? err.message : '未知错误'
   } finally {
-    // loading.value = false
+    loading.value = false
   }
 })
 </script>
@@ -101,7 +101,6 @@ onMounted(async () => {
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!-- 加载状态 -->
     <div v-if="loading" class="text-center py-16">
-<!--      <p class="text-lg">加载中...</p>-->
       <sync-github/>
     </div>
 
