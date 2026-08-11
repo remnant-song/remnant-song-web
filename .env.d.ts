@@ -17,6 +17,20 @@ interface ImportMetaEnv {
   readonly VITE_API_BASE_URL: string
   /** 是否开启调试模式 */
   readonly VITE_DEBUG: string
+  /**
+   * 文章数据源
+   * - 'local'：本地 src/content/posts/ 下 .md 文件
+   * - 'github'：远程 GitHub 仓库拉取
+   */
+  readonly VITE_POST_SOURCE: 'local' | 'github'
+  /** GitHub 仓库所有者 */
+  readonly VITE_GITHUB_OWNER: string
+  /** GitHub 仓库名 */
+  readonly VITE_GITHUB_REPO: string
+  /** GitHub 分支名 */
+  readonly VITE_GITHUB_BRANCH: string
+  /** GitHub Personal Access Token（提升 API 限速） */
+  readonly VITE_GITHUB_TOKEN: string
 }
 
 interface ImportMeta {

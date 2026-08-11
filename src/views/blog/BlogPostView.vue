@@ -4,18 +4,19 @@
   @Modify: trae+deepseek-v4-pro, 2026-08-10,
     引入 markdown-body 样式、highlight.js 主题、mdit-plugins 附加样式；
     添加 spoiler 点击展开交互；
-    新增 onMounted 钩子初始化文章内的交互元素
+    新增 onMounted 钩子初始化文章内的交互元素；
+    支持双数据源：本地 glob 加载（local）与 GitHub API 加载（github）；
+    路由改为 catch-all 模式（/blog/:pathMatch(.*)*），支持任意层级嵌套分类
   @Desc: 博客文章详情页
-    - 根据路由参数 category 和 slug 动态匹配文章
-    - 分类文章路由：/blog/:category/:slug
-    - 根级文章路由：/blog/:slug（category 为空字符串）
+    - 路由为 /blog/:pathMatch(.*)*，最后一个路径段为 slug，其余为 category
+    - 支持任意层级嵌套分类（如 /blog/A/B/C/slug）
     - 文章未找到时显示提示信息
 -->
 <script setup lang="ts">
-import { computed, onMounted, onBeforeUpdate, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUpdate, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { renderMarkdown } from '@/utils/markdown/parser'
-import { findPost } from '@/utils/markdown/loader'
+import type { PostEntry } from '@/utils/markdown/types'
 
 /*
  * 引入全量 Markdown 美化样式：
@@ -27,21 +28,49 @@ import '@/styles/markdown.css'
 
 const route = useRoute()
 
-/*
- * 分类：从路由 params 获取
- * - /blog/:slug → category 为 undefined，取空字符串
- * - /blog/:category/:slug → category 有值
- */
-const category = (route.params.category as string) || ''
-const slug = route.params.slug as string
+// ============================================================
+// 数据源切换
+// ============================================================
+const postSource = import.meta.env.VITE_POST_SOURCE as string
 
-const post = findPost(category, slug)
+/*
+ * 路由参数解析（catch-all 模式，路由为 /blog/:pathMatch(.*)*）
+ * pathMatch 为字符串数组，最后一个元素为 slug，其余元素拼接为 category
+ * 示例：
+ *   /blog/requirements → pathMatch=["requirements"], slug="requirements", category=""
+ *   /blog/dream/钢琴 → pathMatch=["dream","钢琴"], slug="钢琴", category="dream"
+ *   /blog/Exploration and Reflection/首屏/前端3d → pathMatch=["Exploration and Reflection","首屏","前端3d"], slug="前端3d", category="Exploration and Reflection/首屏"
+ */
+const pathMatch = computed(() => (route.params.pathMatch as string[]) || [])
+const slug = computed(() => {
+  const arr = pathMatch.value
+  return arr.length > 0 ? arr[arr.length - 1] : ''
+})
+const category = computed(() => {
+  const arr = pathMatch.value
+  return arr.length > 1 ? arr.slice(0, -1).join('/') : ''
+})
+
+/** 文章对象（null = 加载中，undefined = 未找到） */
+const post = ref<PostEntry | undefined | null>(null)
+
+/** 加载状态 */
+const loading = ref(true)
+
+/** 加载错误信息 */
+const error = ref<string | null>(null)
 
 const html = computed(() => {
-  if (!post) {
+  if (loading.value) {
+    return '<p class="text-text opacity-50 text-center py-16">加载中...</p>'
+  }
+  if (error.value) {
+    return `<p class="text-red-500 text-center py-16">加载失败: ${error.value}</p>`
+  }
+  if (!post.value) {
     return '<p class="text-text opacity-50 text-center py-16">文章未找到</p>'
   }
-  return renderMarkdown(post.rawContent)
+  return renderMarkdown(post.value.rawContent)
 })
 
 /**
@@ -66,10 +95,49 @@ function initPostInteractions(): void {
 
 let initTimer: ReturnType<typeof setTimeout> | null = null
 
-onMounted(() => {
+// ============================================================
+// 文章加载函数（onMounted 和 watch 共用）
+// ============================================================
+async function loadPost() {
+  loading.value = true
+  error.value = null
+
+  try {
+    if (postSource === 'github') {
+      const { findPostFromGitHub } = await import(
+        '@/utils/markdown/github-loader'
+      )
+      post.value = await findPostFromGitHub(category.value, slug.value)
+    } else {
+      const { findPost } = await import('@/utils/markdown/loader')
+      post.value = findPost(category.value, slug.value)
+    }
+  } catch (err) {
+    console.error('[BlogPostView] 加载文章失败:', err)
+    error.value = err instanceof Error ? err.message : '未知错误'
+  } finally {
+    loading.value = false
+  }
+
+  // 初始化交互元素
   nextTick(() => {
     initPostInteractions()
   })
+}
+
+// ============================================================
+// 生命周期
+// ============================================================
+onMounted(() => {
+  loadPost()
+})
+
+/*
+ * 路由切换时（同一组件复用），重新加载文章
+ * 同时重新初始化交互元素
+ */
+watch([category, slug], () => {
+  loadPost()
 })
 
 /*
@@ -87,13 +155,13 @@ onBeforeUpdate(() => {
 </script>
 
 <template>
-  <article v-if="post" class="max-w-3xl mx-auto px-4 py-8">
-    <!-- 面包屑：分类名 → 文章标题 -->
+  <article class="max-w-3xl mx-auto px-4 py-8">
+    <!-- 面包屑：始终显示 -->
     <div class="mb-6 text-sm text-text opacity-50">
       <router-link to="/blog" class="text-accent no-underline hover:underline">
         博客
       </router-link>
-      <template v-if="post.category">
+      <template v-if="post && post.category">
         <span class="mx-2">/</span>
         <router-link
           :to="`/blog?category=${post.category}`"
@@ -103,19 +171,28 @@ onBeforeUpdate(() => {
         </router-link>
       </template>
       <span class="mx-2">/</span>
-      <span>{{ post.title }}</span>
+      <span>{{ post?.title || slug }}</span>
     </div>
 
-    <!--
-      markdown-body：github-markdown-css 的作用域 class
-      所有 GitHub 风格排版仅在 .markdown-body 内生效
-    -->
-    <div class="markdown-body" v-html="html" />
-  </article>
+    <!-- 加载状态 -->
+    <div v-if="loading" class="text-center py-16 text-text opacity-50">
+      <p class="text-lg">加载中...</p>
+    </div>
 
-  <!-- 文章未找到 -->
-  <article v-else class="max-w-3xl mx-auto px-4 py-8">
-    <div class="text-center py-16">
+    <!-- 错误状态 -->
+    <div v-else-if="error" class="text-center py-16">
+      <p class="text-lg text-red-500">加载失败</p>
+      <p class="text-sm text-text opacity-50 mt-2">{{ error }}</p>
+      <router-link
+        to="/blog"
+        class="text-sm text-accent no-underline hover:underline mt-4 inline-block"
+      >
+        ← 返回博客列表
+      </router-link>
+    </div>
+
+    <!-- 文章未找到 -->
+    <div v-else-if="!post" class="text-center py-16">
       <p class="text-lg text-text opacity-50">文章未找到</p>
       <router-link
         to="/blog"
@@ -124,5 +201,14 @@ onBeforeUpdate(() => {
         ← 返回博客列表
       </router-link>
     </div>
+
+    <!-- 文章内容 -->
+    <template v-else>
+      <!--
+        markdown-body：github-markdown-css 的作用域 class
+        所有 GitHub 风格排版仅在 .markdown-body 内生效
+      -->
+      <div class="markdown-body" v-html="html" />
+    </template>
   </article>
 </template>

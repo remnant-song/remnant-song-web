@@ -38,18 +38,21 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/blog/BlogListView.vue'),
     meta: { title: 'Blog' },
   },
+  /*
+   * 博客文章详情路由（catch-all 模式）
+   * - :pathMatch(.*)* 匹配 /blog/ 之后任意数量的路径段
+   * - 最后一个路径段为 slug，其余段拼接为 category
+   * - 示例：
+   *   /blog/requirements → slug="requirements", category=""
+   *   /blog/dream/钢琴 → slug="钢琴", category="dream"
+   *   /blog/Exploration and Reflection/首屏/前端3d → slug="前端3d", category="Exploration and Reflection/首屏"
+   */
   {
-    path: '/blog/:slug',
+    path: '/blog/:pathMatch(.*)*',
     name: 'BlogPost',
     component: () => import('@/views/blog/BlogPostView.vue'),
     meta: { title: 'Blog' },
   },
-  {
-    path: '/blog/:category/:slug',
-    name: 'BlogPostCategorized',
-    component: () => import('@/views/blog/BlogPostView.vue'),
-    meta: { title: 'Blog' },
-  }
 ]
 
 const router = createRouter({

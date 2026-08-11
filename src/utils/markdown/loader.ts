@@ -1,7 +1,8 @@
 /*
  * @Author: trae+glm-5.2
  * @Date: 2026-08-09
- * @Desc: 博客文章加载器
+ * @Modify: trae+deepseek-v4-pro, 2026-08-10, 提取 PostEntry 类型到 types.ts 共享
+ * @Desc: 博客文章本地加载器
  *   - 使用 import.meta.glob 在构建时加载 src/content/posts/ 下所有 .md 文件
  *   - 分类依据：文件所在目录（相对于 posts/），根级文件分类为空字符串
  *   - 排序规则：按文件名降序（若文件名含 YYYY-MM-DD 前缀则天然按时间倒序）
@@ -9,6 +10,11 @@
  *   只需替换 loadAllPosts 的实现为读取 .cache/posts-index.json 即可，
  *   调用方（BlogListView / BlogPostView）无需改动。
  */
+
+import type { PostEntry } from './types'
+
+// 重新导出，保持向后兼容（已有调用方 import type { PostEntry } from '@/utils/markdown/loader'）
+export type { PostEntry }
 
 /**
  * 使用 Vite 的 import.meta.glob 在构建时一次性加载所有 Markdown 文件
@@ -19,25 +25,6 @@ const postModules = import.meta.glob('/src/content/posts/**/*.md', {
   as: 'raw',
   eager: true,
 })
-
-/** 单篇文章的元数据 + 原文 */
-export interface PostEntry {
-  /** URL 标识，取文件名去掉 .md 后缀 */
-  slug: string
-  /**
-   * 分类名，即文件相对于 content/posts/ 的目录路径
-   * - 根级文件（如 posts/foo.md）→ 空字符串
-   * - 子目录文件（如 posts/tech/foo.md）→ "tech"
-   * ponytail: 当前仅支持一级目录作为分类，后续可扩展为多级嵌套
-   */
-  category: string
-  /** 文章标题，从正文第一个 H1 提取，找不到则用 slug 兜底 */
-  title: string
-  /** 原始文件路径（glob key），仅用于调试 */
-  filePath: string
-  /** Markdown 原文，详情页渲染消费 */
-  rawContent: string
-}
 
 /**
  * 从 Markdown 正文中提取第一个 H1 作为标题
