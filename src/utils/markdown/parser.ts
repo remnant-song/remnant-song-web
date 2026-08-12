@@ -165,6 +165,6 @@ export function renderMarkdownInline(raw: string): string {
 /**
  * 获取 markdown-it 实例（供外部扩展插件使用）
  */
-export function getMarkdownIt(): MarkdownIt {
+export function getMarkdownIt(): InstanceType<typeof MarkdownIt> {
   return md
 }

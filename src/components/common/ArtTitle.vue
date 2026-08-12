@@ -125,7 +125,7 @@
 </template>
 
 <script setup lang="ts">
-import {computed, onMounted, ref, watch} from 'vue'
+import {computed, onMounted, ref} from 'vue'
 
 // ======================= 类型定义 =======================
 export interface ColorConfig {
@@ -483,9 +483,6 @@ if (typeof window !== 'undefined') {
     isMounted.value = true
     initPresets()
   })
-} else {
-  // 非浏览器环境跳过
-  const onMounted = (fn: () => void) => fn()
 }
 </script>
 

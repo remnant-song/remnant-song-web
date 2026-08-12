@@ -13,6 +13,13 @@
 
     /*
      * @Author: trae+deepseek-v4-pro
+     * @Date: 2026-08-12
+     * @Desc: 忽略 TS 6.0 废弃选项警告（@vue/tsconfig 继承的 baseUrl 在 TS 6.0 已废弃）
+     */
+    "ignoreDeprecations": "6.0",
+
+    /*
+     * @Author: trae+deepseek-v4-pro
      * @Date: 2026-06-24
      * @Modify: trae+deepseek-v4-pro, 2026-08-12,
      *   移除 baseUrl（TS 6.0 已废弃），paths 独立解析相对于 tsconfig 所在目录
