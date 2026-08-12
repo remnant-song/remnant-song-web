@@ -1,0 +1,5 @@
+# 工具函数目录
+# 存放纯函数工具模块：
+#   format.ts  —— 格式化工具（日期、数字等）
+#   request.ts —— HTTP 请求封装（预留）
+#   validators.ts —— 校验工具

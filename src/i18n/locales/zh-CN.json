@@ -1,0 +1,31 @@
+{
+  "app": {
+    "title": "残响之歌",
+    "subtitle": "个人网站"
+  },
+  "nav": {
+    "home": "首页",
+    "blog": "博客",
+    "about": "关于",
+    "works": "作品",
+    "contact": "联系"
+  },
+  "home": {
+    "greeting": "你好，我是",
+    "role": "开发者 / 创作者",
+    "cta": "探索我的作品"
+  },
+  "footer": {
+    "copyright": "版权所有。",
+    "builtWith": "使用 Vue 3 + Vite + TypeScript 构建"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "页面未找到",
+    "goHome": "返回首页"
+  },
+  "language": {
+    "switch": "English",
+    "label": "语言"
+  }
+}

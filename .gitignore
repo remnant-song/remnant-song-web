@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 /.vscode/
+/docs/task1.1.md
+/src/content/posts/test/ARCHITECTURE.md
+
+# 环境变量（含敏感信息如 GitHub Token，不可提交）
+.env
