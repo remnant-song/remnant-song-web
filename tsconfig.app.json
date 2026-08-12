@@ -14,9 +14,10 @@
     /*
      * @Author: trae+deepseek-v4-pro
      * @Date: 2026-06-24
+     * @Modify: trae+deepseek-v4-pro, 2026-08-12,
+     *   移除 baseUrl（TS 6.0 已废弃），paths 独立解析相对于 tsconfig 所在目录
      * @Desc: 配置路径映射，与 vite.config.ts 中的 @ 别名保持一致
      */
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
