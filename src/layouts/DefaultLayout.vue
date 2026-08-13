@@ -19,6 +19,7 @@ const { t } = useI18n()
 const navItems = [
   { key: 'home', path: '/' },
   { key: 'blog', path: '/blog' },
+  { key: 'portal', path: '/portal' },
   // 后续扩展更多导航项，在此数组中添加即可
   // { key: 'about', path: '/about' },
   // { key: 'works', path: '/works' },

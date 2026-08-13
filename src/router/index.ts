@@ -25,6 +25,14 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
+    path: '/portal',
+    name: 'Portal',
+    component: () => import('@/views/AnimeRoom.vue'),
+    meta: {
+      title: 'Portal',
+    },
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/views/NotFoundView.vue'),
