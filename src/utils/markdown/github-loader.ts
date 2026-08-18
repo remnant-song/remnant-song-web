@@ -391,8 +391,17 @@ async function fetchRawContentFromGitee(filePath: string): Promise<string> {
 
   // Gitee API contents 端点返回 base64 编码的内容
   if (data.encoding === 'base64' && data.content) {
-    // atob 解码 base64 字符串
-    return atob(data.content)
+    /*
+     * atob() 返回的是二进制字符串（每个字符码点 0-255），
+     * 不能直接作为 UTF-8 文本使用，否则中文等多字节字符会乱码。
+     * 需要先转为 Uint8Array 字节数组，再通过 TextDecoder 解码为 UTF-8。
+     */
+    const binary = atob(data.content)
+    const bytes = new Uint8Array(binary.length)
+    for (let i = 0; i < binary.length; i++) {
+      bytes[i] = binary.charCodeAt(i)
+    }
+    return new TextDecoder('utf-8').decode(bytes)
   }
 
   console.warn(
@@ -474,7 +483,7 @@ async function loadAllPostsFromGitee(): Promise<PostEntry[]> {
  */
 
 /** GitHub 请求超时时间（毫秒），超过此时间视为不可用 */
-const GITHUB_TIMEOUT_MS = 3000
+const GITHUB_TIMEOUT_MS = 1000
 
 /**
  * 带超时和降级的文章列表加载
