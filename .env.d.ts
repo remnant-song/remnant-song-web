@@ -31,6 +31,17 @@ interface ImportMetaEnv {
   readonly VITE_GITHUB_BRANCH: string
   /** GitHub Personal Access Token（提升 API 限速） */
   readonly VITE_GITHUB_TOKEN: string
+  /**
+   * Gitee 镜像仓库所有者（国内降级方案）
+   * 当 GitHub 不可用时自动切换
+   */
+  readonly VITE_GITEE_OWNER: string
+  /** Gitee 镜像仓库名 */
+  readonly VITE_GITEE_REPO: string
+  /** Gitee 分支名 */
+  readonly VITE_GITEE_BRANCH: string
+  /** Gitee 私人令牌（可选，提升 API 限速） */
+  readonly VITE_GITEE_TOKEN: string
 }
 
 interface ImportMeta {

@@ -104,10 +104,15 @@ async function loadPost() {
 
   try {
     if (postSource === 'github') {
-      const { findPostFromGitHub } = await import(
+      /*
+       * @Modify: trae+deepseek-v4-pro, 2026-08-12
+       *   改用 findPostFromRemote，内部自动降级：
+       *   GitHub 8 秒超时 → 自动切换 Gitee 镜像
+       */
+      const { findPostFromRemote } = await import(
         '@/utils/markdown/github-loader'
       )
-      post.value = await findPostFromGitHub(category.value, slug.value)
+      post.value = await findPostFromRemote(category.value, slug.value)
     } else {
       const { findPost } = await import('@/utils/markdown/loader')
       post.value = findPost(category.value, slug.value)
