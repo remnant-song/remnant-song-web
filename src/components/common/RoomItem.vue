@@ -10,12 +10,15 @@
     }"
       @click="openLink"
   >
-    <!-- 物件图片 -->
+    <!--
+      @Modify: trae+deepseek-v4-pro, 2026-08-13
+        常驻微微泛光轮廓（drop-shadow 白色光晕），hover 时增强
+    -->
     <img
         :src="item.imgSrc"
         :alt="item.label"
-        class="w-full h-auto object-contain drop-shadow-lg transition-transform duration-300 ease-out will-change-transform"
-        :class="{ 'scale-110 brightness-110 drop-shadow-[0_0_12px_rgba(255,255,255,0.7)]': isHovered }"
+        class="w-full h-auto object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.45)] transition-transform duration-300 ease-out will-change-transform"
+        :class="{ 'scale-110 brightness-110 drop-shadow-[0_0_16px_rgba(255,255,255,0.8)]': isHovered }"
         @mouseenter="onHover"
         @mouseleave="onLeave"
     />

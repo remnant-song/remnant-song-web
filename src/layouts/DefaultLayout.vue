@@ -42,9 +42,14 @@ function isActive(path: string): boolean {
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen">
-    <!-- ========== Header / 页头 ========== -->
-    <header class="sticky top-0 z-50 bg-bg/80 backdrop-blur-sm border-b border-border">
+  <!--
+    @Modify: trae+deepseek-v4-pro, 2026-08-13
+      header 改为 fixed 透明叠加，不再参与页面空间分配
+      背景内容可延伸至整个视口（包括导航栏区域）
+  -->
+  <div class="min-h-screen">
+    <!-- ========== Header / 页头（透明叠加层） ========== -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-transparent">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-center relative">
         <!-- 网站标题 -->
 <!--        <router-link-->
@@ -79,8 +84,8 @@ function isActive(path: string): boolean {
       </div>
     </header>
 
-    <!-- ========== Main Content / 主内容区 ========== -->
-    <main class="flex-1">
+    <!-- ========== Main Content / 主内容区（全视口） ========== -->
+    <main class="min-h-screen">
       <router-view v-slot="{ Component }">
         <!--
           @Modify: trae+deepseek-v4-pro, 2026-08-10
